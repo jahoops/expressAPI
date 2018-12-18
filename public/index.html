@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <style>
+      html,body{
+          height:100%;
+      }
+      .flex-fill {
+          flex:1;
+      }
+    </style>
+    <title>Flashcards</title>
+  </head>
+  <body>
+    <div class="container-flex h-100">
+      <div class="row w-100 h-100">
+          <div class="col-1 bg-light"></div>
+          <div class="col-4 bg-primary">
+          </div>
+          <div class="col-6 bg-success" id="flashCardDiv">
+              <div class="card w-100 h-100">
+                  <div class="card-header text-center bg-dark">
+                      <h4 class="text-white heading"></h4>
+                    </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="comment">Question:</label>
+                    <div class="form-control" id="question"></div>
+                    <textarea class="form-control d-none" id="edit_question"></textarea>
+                    <label for="comment">Answer:</label>
+                    <div class="border border-teal-dark rounded p-2" rows="12" id="answer" style="cursor:pointer;"></div>
+                    <textarea class="form-control d-none" rows="12" id="edit_answer" style="cursor:pointer;"></textarea>
+                  </div>
+                </div>    
+                <div class="card-footer text-center">
+                  <button class="btn btn-sm btn-success correct">Correct</button>
+                  <button class="btn btn-sm btn-alert incorrect">Incorrect</button>
+                  <button class="btn btn-sm btn-alert post">Post</button>
+                </div> 
+            </div>      
+          </div>
+          <div class="col-1 bg-light"></div>
+      </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/jb-flashcards.js"></script>
+    <script src="./data/questions.js"></script>
+    <script>
+      var hideAnswerText = 'Click here for answer';
+      var cards = new flashcards('jsdata',jsdata);
+      var card = cards.next();
+      var heading = $('#flashCardDiv .heading');
+      var question = $('#flashCardDiv #question');
+      var answer = $('#flashCardDiv #answer');
+      $(function(){
+        heading.html(cards.SetName);
+        question.html(card.Q);
+
+        answer.attr('answer',card.A).html(hideAnswerText);
+        answer.on('click', function(){
+          if(answer.html() == hideAnswerText) {
+            answer.html(answer.attr('answer'));
+          }
+        });
+        $('#flashCardDiv .correct').on('click', function(){
+          cards.correct();
+          card = cards.next();
+          answer.attr('answer',card.A);
+          answer.html(hideAnswerText);
+          question.html(card.Q);
+        });
+        $('#flashCardDiv .incorrect').on('click', function(){
+          cards.wrong();
+          card = cards.next();
+          answer.attr('answer',card.A);
+          answer.html(hideAnswerText);
+          question.html(card.Q);
+        });
+        $('#flashCardDiv .post').on('click', function(){
+          $.get('/api/v1/posts/1',function(data){
+            question.html(data);
+          })
+        });
+      })
+    </script>
+  </body>
+</html>

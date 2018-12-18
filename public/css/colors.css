@@ -1,0 +1,631 @@
+/* Background Colors */
+
+.btn {
+    white-space: normal;
+}
+
+.bg-navy {
+	background-color: #001F3F;
+}
+
+.bg-blue {
+	background-color: #0074D9;
+}
+
+.bg-aqua {
+	background-color: #7FDBFF;
+}
+
+.bg-teal {
+	background-color: #39CCCC;
+}
+
+.bg-olive {
+	background-color: #3D9970;
+}
+
+.bg-green {
+	background-color: #2ECC40;
+}
+
+.bg-darkgreen {
+	background-color: darkgreen;
+}
+
+.bg-lime {
+	background-color: #01FF70;
+}
+
+.bg-yellow {
+	background-color: #FFDC00;
+}
+
+.bg-hilite {
+	background-color: lightyellow;
+}
+
+.bg-gold {
+	background-color: rgb(155, 155, 11);
+}
+.bg-orange {
+	background-color: #FF851B;
+}
+.bg-lightorange {
+	background-color: rgba(255, 230, 200, 1);
+}
+.bg-red {
+	background-color: #FF4136;
+}
+.bg-fuchsia {
+	background-color: #F012BE;
+}
+.bg-purple {
+	background-color: #B10DC9;
+}
+.bg-maroon {
+	background-color: #85144B;
+}
+.bg-white {
+	background-color: #FFFFFF;
+}
+.bg-gray {
+	background-color: #AAAAAA;
+}
+.bg-silver {
+	background-color: #DDDDDD;
+}
+.bg-black {
+	background-color: #111111;
+}
+.bg-creps {
+	background-color: #ded;
+}
+.bg-crepsdark {
+	background-color: #cdc;
+}
+.bg-crepslight {
+	background-color: #efe;
+}
+.bg-crepssection {
+	background-color: rgb(221, 238, 221);
+}
+.bg-dark {
+	background-color: #464A40;
+}
+
+.bg-floralwhite {
+	background-color: floralwhite;
+}
+
+/* Colors */
+
+.navy {
+	color: navy;
+}
+
+.blue {
+	color: #0074D9;
+}
+
+.aqua {
+	color: #7FDBFF;
+}
+
+.teal {
+	color: #39CCCC;
+}
+
+.olive {
+	color: #3D9970;
+}
+
+.green {
+	color: #2ECC40;
+}
+
+.darkgreen {
+	color: #006400;
+}
+
+.lime {
+	color: #01FF70;
+}
+
+.yellow {
+	color: #FFDC00;
+}
+
+.gold {
+	color: rgb(155, 155, 11);
+}
+
+.orange {
+	color: #FF851B;
+}
+
+.red {
+	color: #FF4136;
+}
+
+.fuchsia {
+	color: #F012BE;
+}
+
+.purple {
+	color: #B10DC9;
+}
+
+.maroon {
+	color: #85144B;
+}
+
+.white {
+	color: #FFFFFF;
+}
+
+.silver {
+	color: #DDDDDD;
+}
+
+.gray {
+	color: #AAAAAA;
+}
+
+.darkgray {
+	color: #666666;
+}
+
+.black {
+	color: #111111;
+}
+
+.brown {
+	color: brown;
+}
+
+.gold {
+	color: goldenrod;
+}
+
+/* Border colors 
+   Use with another border utility that sets border-width and style 
+   i.e .border { border-width: 1px); border-style: solid); }     
+*/
+
+.border--navy {
+	border-color: #001F3F !important;
+}
+
+.border--blue {
+	border-color: #0074D9 !important;
+}
+
+.border--aqua {
+	border-color: #7FDBFF !important;
+}
+
+.border--teal {
+	border-color: #39CCCC !important;
+}
+
+.border--olive {
+	border-color: #3D9970 !important;
+}
+
+.border--green {
+	border-color: #2ECC40 !important;
+}
+
+.border--darkgreen {
+	border-color: #006400 !important;
+}
+
+.border--lime {
+	border-color: #01FF70 !important;
+}
+
+.border--yellow {
+	border-color: #FFDC00 !important;
+}
+
+.border--orange {
+	border-color: #FF851B !important;
+}
+
+.border--red {
+	border-color: #FF4136 !important;
+}
+
+.border--fuchsia {
+	border-color: #F012BE !important;
+}
+
+.border--purple {
+	border-color: #B10DC9 !important;
+}
+
+.border--maroon {
+	border-color: #85144B !important;
+}
+
+.border--white {
+	border-color: #FFFFFF !important;
+}
+
+.border--silver {
+	border-color: #DDDDDD !important;
+}
+
+.border--gray {
+	border-color: #AAAAAA !important;
+}
+
+.border--darkgray {
+	border-color: #666666 !important;
+}
+
+.border--black {
+	border-color: #111111 !important;
+}
+
+.border--creps {
+	border-color: #bcb !important;
+}
+
+.border--crepsdark {
+	border-color: #EED !important;
+}
+.border--selected {
+	border: 2px darkgreen solid !important;
+}
+/* Fills for SVG */
+
+.fill-navy {
+	fill: #001F3F;
+}
+
+.fill-blue {
+	fill: #0074D9;
+}
+
+.fill-aqua {
+	fill: #7FDBFF;
+}
+
+.fill-teal {
+	fill: #39CCCC;
+}
+
+.fill-olive {
+	fill: #3D9970;
+}
+
+.fill-green {
+	fill: #2ECC40;
+}
+
+.fill-lime {
+	fill: #01FF70;
+}
+
+.fill-yellow {
+	fill: #FFDC00;
+}
+
+.fill-orange {
+	fill: #FF851B;
+}
+
+.fill-red {
+	fill: #FF4136;
+}
+
+.fill-fuchsia {
+	fill: #F012BE;
+}
+
+.fill-purple {
+	fill: #B10DC9;
+}
+
+.fill-maroon {
+	fill: #85144B;
+}
+
+.fill-white {
+	fill: #FFFFFF;
+}
+
+.fill-gray {
+	fill: #AAAAAA;
+}
+
+.fill-silver {
+	fill: #DDDDDD;
+}
+
+.fill-black {
+	fill: #111111;
+}
+
+.fill-brown {
+	fill: brown;
+}
+
+.fill-gold {
+	fill: goldenrod;
+}
+
+/* Strokes for SVG */
+
+.stroke-navy {
+	stroke: #001F3F;
+}
+
+.stroke-blue {
+	stroke: #0074D9;
+}
+
+.stroke-aqua {
+	stroke: #7FDBFF;
+}
+
+.stroke-teal {
+	stroke: #39CCCC;
+}
+
+.stroke-olive {
+	stroke: #3D9970;
+}
+
+.stroke-green {
+	stroke: #2ECC40;
+}
+
+.stroke-lime {
+	stroke: #01FF70;
+}
+
+.stroke-yellow {
+	stroke: #FFDC00;
+}
+
+.stroke-orange {
+	stroke: #FF851B;
+}
+
+.stroke-red {
+	stroke: #FF4136;
+}
+
+.stroke-fuchsia {
+	stroke: #F012BE;
+}
+
+.stroke-purple {
+	stroke: #B10DC9;
+}
+
+.stroke-maroon {
+	stroke: #85144B;
+}
+
+.stroke-white {
+	stroke: #FFFFFF;
+}
+
+.stroke-gray {
+	stroke: #AAAAAA;
+}
+
+.stroke-silver {
+	stroke: #DDDDDD;
+}
+
+.stroke-black {
+	stroke: #111111;
+}
+
+/* special */
+
+.em-20 {
+	font-size: 2.0em !important;
+}
+.em-14 {
+	font-size: 1.4em !important;
+}
+.em-12 {
+	font-size: 1.2em !important;
+}
+.rem-08 {
+	font-size: .8rem !important;
+}
+.rem-07 {
+	font-size: .7rem !important;
+}
+.rem-06 {
+	font-size: .6rem !important;
+}
+
+.fs-pct-90 {
+	font-size: 90%;
+}
+
+.fs-pct-80 {
+	font-size: 80%;
+}
+
+.shadowtext {
+	text-shadow: 0px 0px 1px #AAA;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.clickable:hover {
+	color: green !important;
+}
+
+.clickable2 {
+	cursor: pointer;
+}
+
+.clickable2:hover {
+	color: white !important;
+	background-color: red !important;
+}
+
+.clickable2:hover {
+	color: white !important;
+	background-color: red !important;
+}
+.deadcenter {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pulse-success {
+	box-shadow: 0px 0px 5px 2px rgba(45, 220, 45, .8);
+	animation: pulse-success 3.5s infinite;
+}
+
+.pulse3x {
+	box-shadow: 0px 0px 5px 2px rgba(45, 220, 45, .8);
+	animation: pulse-success 3.5s 2;
+}
+
+@keyframes pulse-success {
+	0% {
+		box-shadow: 0px 0px 5px 2px rgba(45, 220, 45, .8);
+	}
+	70% {
+		box-shadow: 0px 0px 5px 2px rgba(45, 220, 45, 0);
+	}
+	100% {
+		box-shadow: 0px 0px 5px 2px rgba(45, 220, 45, .8);
+	}
+}
+
+.pulse-warn {
+	box-shadow: 0px 0px 5px 2px rgba(220, 45, 45, .8);
+	animation: pulse-warn 3.5s infinite;
+}
+
+@keyframes pulse-warn {
+	0% {
+		box-shadow: 0px 0px 5px 2px rgba(220, 45, 45, .8);
+	}
+	70% {
+		box-shadow: 0px 0px 5px 2px rgba(220, 45, 45, 0);
+	}
+	100% {
+		box-shadow: 0px 0px 5px 2px rgba(220, 45, 45, .8);
+	}
+}
+
+.input-spinner {
+	background: url(/hd/images/preloaders/loaderAni.gif) no-repeat 10px center;
+}
+
+.ui-dialog.bootstrap {
+	background: #ded;
+	box-shadow: 1px 1px 1px #AAA;
+}
+
+.ui-dialog.bootstrap .ui-dialog-titlebar {
+	border: none;
+	background: transparent;
+	color: #888;
+}
+
+.ui-dialog.bootstrap .ui-dialog-content {
+	border: thin solid #cdc;
+	background: #efe;
+}
+
+.box-shadow {
+	box-shadow: 1px 1px 1px #CCC;
+}
+
+.creps-popup {
+	background: #efe;
+	border: 1px solid #aba;
+	box-shadow: 1px 1px 1px #CCC;
+}
+
+.creps-flex {
+	background: #eed;
+	border: 1px solid #ddd;
+}
+
+body.waiting * {
+    cursor: progress;
+}
+
+.creps-none {
+	background-color: transparent;
+	border: none;
+}
+.creps-input {
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+	font-size: 1em;
+}
+.creps-label {
+    color: #999;
+    font-size: .9em;
+}
+.creps-el {
+	background-color: rgba(200, 200, 200, 0.6);
+	border-color: #999;
+	border-radius: 0.25rem;
+}
+.creps-button {
+	background-color: rgba(200, 200, 200, 0.6);
+	border-color: #999;
+	border-radius: 0.25rem;
+}
+.creps-button:hover {
+	background-color: beige;
+	color:darkblue;
+}
+.creps-select {
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+	font-size: 1em;
+}
+.creps-container {
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+}
+.creps-sectionheading {
+	font-size: 18px; 
+	color: #555;
+	text-transform: uppercase
+}
+.creps-round {
+	border-radius: 50%;
+}
+.min-width-100 {
+	min-width: 100px;
+}
+.min-width-70 {
+	min-width: 70px;
+}
+.prepend-border {
+	border-radius: 0px 0px 0.2rem 0.2rem !important;
+}
+.append-border {
+	border-radius: 0.2rem 0.2rem 0px 0px !important;
+}
+.z999999 {
+	z-index: 999999;
+}
+.table-wrapper-scroll-y {
+	display: block;
+	max-height: 200px;
+	overflow-y: auto;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
