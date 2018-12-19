@@ -1,6 +1,6 @@
-const helper = require('../helpers/helper.js')
-let questions = []
-let filename = ''
+const helper = require('../helpers/helper.js');
+let questions = [];
+let filename = '';
 
 function getQuestions() {
     return new Promise((resolve, reject) => {
@@ -18,18 +18,18 @@ function getQuestion(id) {
     return new Promise((resolve, reject) => {
         helper.mustBeInArray(posts, id)
         .then(post => resolve(post))
-        .catch(err => reject(err))
+        .catch(err => reject(err));
     })
 }
 
-function insertQuestion(newPost) {
+function insertQuestion(question, answer) {
     return new Promise((resolve, reject) => {
-        const id = { id: helper.getNewId(posts) }
+        const id = { ID: helper.getNewId(questions) };
         const date = { 
             createdAt: helper.newDate(),
             updatedAt: helper.newDate()
         } 
-        newPost = { ...id, ...date, ...newPost }
+        newPost = { id, ...date, ...newPost }
         posts.push(newPost)
         helper.writeJSONFile(filename, posts)
         resolve(newPost)
