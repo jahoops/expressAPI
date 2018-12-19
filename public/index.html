@@ -40,7 +40,9 @@
                 <div class="card-footer text-center">
                   <button class="btn btn-sm btn-success correct">Correct</button>
                   <button class="btn btn-sm btn-alert incorrect">Incorrect</button>
-                  <button class="btn btn-sm btn-alert post">Post</button>
+                  <button class="btn btn-sm btn-alert next">Next</button>
+                  <button class="btn btn-sm btn-alert edit">Edit</button>
+                  <button class="btn btn-sm btn-alert btn-success d-none update">Update</button>
                 </div> 
             </div>      
           </div>
@@ -68,21 +70,38 @@
             answer.html(answer.attr('answer'));
           }
         });
-        $('#flashCardDiv .correct').on('click', function(){
+        $('#flashCardDiv button.correct').on('click', function(){
           cards.correct();
           card = cards.next();
           answer.attr('answer',card.A);
           answer.html(hideAnswerText);
           question.html(card.Q);
         });
-        $('#flashCardDiv .incorrect').on('click', function(){
+        $('#flashCardDiv button.incorrect').on('click', function(){
           cards.wrong();
           card = cards.next();
           answer.attr('answer',card.A);
           answer.html(hideAnswerText);
           question.html(card.Q);
         });
-        $('#flashCardDiv .post').on('click', function(){
+        $('#flashCardDiv button.next').on('click', function(){
+          $.get('/api/v1/posts/1',function(data){
+            let el = '<div class="form-row">';
+            for(datum in data){
+              el += '<div class="col-4 form-control bg-green text-white">' + datum + '</div>';
+              el += '<div class="col-8 form-control bg-yellow text-lime-dark">' + data[datum] + '</div>';
+            }
+            el += '</div>';
+            answer.html(el);
+          })
+        });
+        $('#flashCardDiv button.edit').on('click', function(){
+          $('#edit_question').val($('#question').html());
+          $('#edit_answer').val($('#answer').html());
+          $('#edit_question,#question,#edit_answer,#answer').toggleClass('d-none');
+          $('#flashCardDiv button.update').toggleClass('d-none');
+        });
+        $('#flashCardDiv button.update').on('click', function(){
           $.get('/api/v1/posts/1',function(data){
             let el = '<div class="form-row">';
             for(datum in data){
