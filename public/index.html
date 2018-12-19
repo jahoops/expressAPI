@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap-colors.css">
+    <link rel="stylesheet" href="./css/colors.css">
     <style>
       html,body{
           height:100%;
@@ -82,7 +84,13 @@
         });
         $('#flashCardDiv .post').on('click', function(){
           $.get('/api/v1/posts/1',function(data){
-            question.html(data);
+            let el = '<div class="form-row">';
+            for(datum in data){
+              el += '<div class="col-4 form-control bg-green text-white">' + datum + '</div>';
+              el += '<div class="col-8 form-control bg-yellow text-lime-dark">' + data[datum] + '</div>';
+            }
+            el += '</div>';
+            answer.html(el);
           })
         });
       })

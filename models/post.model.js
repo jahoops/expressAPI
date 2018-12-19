@@ -10,7 +10,6 @@ function getPosts() {
                 status: 202
             })
         }
-
         resolve(posts)
     })
 }
