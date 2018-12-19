@@ -1,12 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const post = require('../models/post.model')
-const m = require('../helpers/middlewares')
+const express = require('express');
+const router = express.Router();
+const questionModel = require('../models/questions.model');
+const m = require('../helpers/middlewares');
 
-/* All posts */
+/* All questions */
 router.get('/', async (req, res) => {
-    await post.getPosts()
-    .then(posts => res.json(posts))
+    await questionModel.getQuestions()
+    .then(questions => res.json(questions))
     .catch(err => {
         if (err.status) {
             res.status(err.status).json({ message: err.message })
@@ -16,12 +16,11 @@ router.get('/', async (req, res) => {
     })
 })
 
-/* A post by id */
+/* A question by id */
 router.get('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
-
-    await post.getPost(id)
-    .then(post => res.json(post))
+    await questionModel.getQuestion(id)
+    .then(question => res.json(question))
     .catch(err => {
         if (err.status) {
             res.status(err.status).json({ message: err.message })
@@ -31,24 +30,24 @@ router.get('/:id', m.mustBeInteger, async (req, res) => {
     })
 })
 
-/* Insert a new post */
-router.post('/', m.checkFieldsPost, async (req, res) => {
-    await post.insertPost(req.body)
-    .then(post => res.status(201).json({
-        message: `The post #${post.id} has been created`,
-        content: post
+/* Insert a new question */
+router.post('/', m.checkFieldsQuestion, async (req, res) => {
+    await questionModel.insertQuestion(req.body)
+    .then(question => res.status(201).json({
+        message: `The question #${question.id} has been created`,
+        content: question
     }))
     .catch(err => res.status(500).json({ message: err.message }))
 })
 
-/* Update a post */
-router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
+/* Update a question */
+router.put('/:id', m.mustBeInteger, m.checkFieldsQuestion, async (req, res) => {
     const id = req.params.id
 
-    await post.updatePost(id, req.body)
-    .then(post => res.json({
-        message: `The post #${id} has been updated`,
-        content: post
+    await questionModel.updateQuestion(id, req.body)
+    .then(question => res.json({
+        message: `The question #${id} has been updated`,
+        content: question
     }))
     .catch(err => {
         if (err.status) {
@@ -58,13 +57,13 @@ router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
     })
 })
 
-/* Delete a post */
+/* Delete a question */
 router.delete('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
-    await post.deletePost(id)
-    .then(post => res.json({
-        message: `The post #${id} has been deleted`
+    await questionModel.deleteQuestion(id)
+    .then(question => res.json({
+        message: `The question #${id} has been deleted`
     }))
     .catch(err => {
         if (err.status) {
