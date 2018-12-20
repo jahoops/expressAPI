@@ -28,7 +28,7 @@
                       <h4 class="text-white heading"></h4>
                     </div>
                 <div class="card-body">
-                  <div class="form-group">
+                  <div class="form-group" id="question_id">
                     <label for="comment">Question:</label>
                     <div class="form-control" id="question"></div>
                     <textarea class="form-control d-none" id="edit_question"></textarea>
@@ -52,19 +52,27 @@
     <script src="./js/jquery-3.2.1.min.js"></script>
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/jb-flashcards.js"></script>
-    <script src="./data/questions.js"></script>
     <script>
       var hideAnswerText = 'Click here for answer';
-      var cards = new flashcards('jsdata',jsdata);
-      var card = cards.next();
+      var cards;
+      var card;
       var heading = $('#flashCardDiv .heading');
+      var question_id = $('#flashCardDiv #question_id');
       var question = $('#flashCardDiv #question');
       var answer = $('#flashCardDiv #answer');
+      $.get('/api/v1/questions/',function(data){
+        cards = new flashcards(data);
+        heading.html('JavaScript Questions');
+        renderNext();
+      });        
+      function renderNext(){
+        $.get('/api/v1/questions/' + cards.next(),function(data){
+          question_id.attr('qid', data.id);
+          question.html(data.q);
+          answer.attr('answer',data.a).html(hideAnswerText);
+        })
+      }
       $(function(){
-        heading.html(cards.SetName);
-        question.html(card.Q);
-
-        answer.attr('answer',card.A).html(hideAnswerText);
         answer.on('click', function(){
           if(answer.html() == hideAnswerText) {
             answer.html(answer.attr('answer'));
@@ -72,28 +80,14 @@
         });
         $('#flashCardDiv button.correct').on('click', function(){
           cards.correct();
-          card = cards.next();
-          answer.attr('answer',card.A);
-          answer.html(hideAnswerText);
-          question.html(card.Q);
+          renderNext();
         });
         $('#flashCardDiv button.incorrect').on('click', function(){
           cards.wrong();
-          card = cards.next();
-          answer.attr('answer',card.A);
-          answer.html(hideAnswerText);
-          question.html(card.Q);
+          renderNext();
         });
         $('#flashCardDiv button.next').on('click', function(){
-          $.get('/api/v1/posts/1',function(data){
-            let el = '<div class="form-row">';
-            for(datum in data){
-              el += '<div class="col-4 form-control bg-green text-white">' + datum + '</div>';
-              el += '<div class="col-8 form-control bg-yellow text-lime-dark">' + data[datum] + '</div>';
-            }
-            el += '</div>';
-            answer.html(el);
-          })
+          renderNext()
         });
         $('#flashCardDiv button.edit').on('click', function(){
           $('#edit_question').val($('#question').html());
@@ -102,14 +96,17 @@
           $('#flashCardDiv button.update').toggleClass('d-none');
         });
         $('#flashCardDiv button.update').on('click', function(){
-          $.get('/api/v1/posts/1',function(data){
-            let el = '<div class="form-row">';
-            for(datum in data){
-              el += '<div class="col-4 form-control bg-green text-white">' + datum + '</div>';
-              el += '<div class="col-8 form-control bg-yellow text-lime-dark">' + data[datum] + '</div>';
+          $.ajax({
+            type: "PUT",
+            url: "/api/v1/questions/",
+            data: {
+              id: question_id.attr('qid'),
+              q: $('#edit_question').val(),
+              a: $('#edit_answer').val()
+            },
+            success: function(data) {
+              console.log('question updated');
             }
-            el += '</div>';
-            answer.html(el);
           })
         });
       })

@@ -1,7 +1,7 @@
 
-const filename = '../public/data/questions.json';
-const helper = require('../public/data/questions.json');
-let questions = require('../data/questions.json');
+const filename = '../data/questions.json';
+const helper = require('../helpers/helper');
+let questions = require(filename);
 
 function getItems() {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,12 @@ function getItems() {
                 status: 202
             });
         }
-        resolve(questions);
+        var questionIds = [];
+        for(var i = 0; i < questions.length; i++) {
+            var row = questions[i]
+            questionIds.push(row.id);
+        }
+        resolve(questionIds);
     });
 }
 
