@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const questionModel = require('../models/questions.model');
+const model = require('../models/questions.model.js');
 const m = require('../helpers/middlewares');
 
 /* All questions */
 router.get('/', async (req, res) => {
-    await questionModel.getQuestions()
+    await model.getItems()
     .then(questions => res.json(questions))
     .catch(err => {
         if (err.status) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 /* A question by id */
 router.get('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
-    await questionModel.getQuestion(id)
+    await model.getItem(id)
     .then(question => res.json(question))
     .catch(err => {
         if (err.status) {
@@ -32,7 +32,7 @@ router.get('/:id', m.mustBeInteger, async (req, res) => {
 
 /* Insert a new question */
 router.post('/', m.mustBeInteger, async (req, res) => {
-    await questionModel.insertQuestion(req.body)
+    await model.inserItem(req.body)
     .then(question => res.status(201).json({
         message: `The question #${question.id} has been created`,
         content: question
@@ -44,7 +44,7 @@ router.post('/', m.mustBeInteger, async (req, res) => {
 router.put('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
-    await questionModel.updateQuestion(id, req.body)
+    await model.updateItem(id, req.body)
     .then(question => res.json({
         message: `The question #${id} has been updated`,
         content: question
@@ -61,7 +61,7 @@ router.put('/:id', m.mustBeInteger, async (req, res) => {
 router.delete('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
-    await questionModel.deleteQuestion(id)
+    await model.deleteItem(id)
     .then(question => res.json({
         message: `The question #${id} has been deleted`
     }))

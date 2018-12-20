@@ -1,8 +1,9 @@
-const helper = require('../helpers/helper.js');
-let questions = require('../data/questions.json');
-let filename = '';
 
-function getQuestions() {
+const filename = '../public/data/questions.json';
+const helper = require('../public/data/questions.json');
+let questions = require('../data/questions.json');
+
+function getItems() {
     return new Promise((resolve, reject) => {
         if (questions.length === 0) {
             reject({
@@ -14,31 +15,30 @@ function getQuestions() {
     });
 }
 
-function getQuestion(id) {
+function getItem(id) {
     return new Promise((resolve, reject) => {
         helper.mustBeInArray(questions, id)
-        .then(question => resolve(question))
+        .then(item => resolve(item))
         .catch(err => reject(err));
     });
 }
 
-function insertQuestion(question, answer) {
+function insertItem(q,a) {
     return new Promise((resolve, reject) => {
         const id = helper.getNewId(questions);
-        newQuestion = { ID:id, Q:question, A:answer };
-        questions.push(newPost);
+        newItem = { id:id,q:q,a:a };
+        questions.push(newItem);
         helper.writeJSONFile(filename, questions);
-        resolve(newQuestion);
+        resolve(newItem);
     });
 }
 
-function updateQuestion(id, editedQuestion, editedAnswer) {
+function updateItem(id,q,a) {
     return new Promise((resolve, reject) => {
         helper.mustBeInArray(questions, id)
-        .then(question => {
-            const index = questions.findIndex(p => p.id == question.id);
-            id = question.id;
-            questions[index] = { ID:id, Q:editedQuestion, A:editedAnswer };
+        .then(item => {
+            const index = questions.findIndex(p => p.id == item.id);
+            questions[index] = { id:item.id,q:q,a:a };
             helper.writeJSONFile(filename, questions);
             resolve(questions[index]);
         })
@@ -46,11 +46,11 @@ function updateQuestion(id, editedQuestion, editedAnswer) {
     });
 }
 
-function deleteQuestion(id) {
+function deleteItem(id) {
     return new Promise((resolve, reject) => {
         helper.mustBeInArray(questions, id)
         .then(() => {
-            questions = questions.filter(p => p.ID !== id)
+            questions = questions.filter(p => p.id !== id)
             helper.writeJSONFile(filename, questions);
             resolve();
         })
@@ -59,9 +59,9 @@ function deleteQuestion(id) {
 }
 
 module.exports = {
-    insertQuestion,
-    getQuestions,
-    getQuestion, 
-    updateQuestion,
-    deleteQuestion
+    insertItem,
+    getItems,
+    getItem, 
+    updateItem,
+    deleteItem
 };
