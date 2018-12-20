@@ -31,7 +31,7 @@ router.get('/:id', m.mustBeInteger, async (req, res) => {
 })
 
 /* Insert a new question */
-router.post('/', m.checkFieldsQuestion, async (req, res) => {
+router.post('/', m.mustBeInteger, async (req, res) => {
     await questionModel.insertQuestion(req.body)
     .then(question => res.status(201).json({
         message: `The question #${question.id} has been created`,
@@ -41,7 +41,7 @@ router.post('/', m.checkFieldsQuestion, async (req, res) => {
 })
 
 /* Update a question */
-router.put('/:id', m.mustBeInteger, m.checkFieldsQuestion, async (req, res) => {
+router.put('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
     await questionModel.updateQuestion(id, req.body)
