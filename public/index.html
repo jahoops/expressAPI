@@ -53,7 +53,7 @@
     <script src="./js/bootstrap.bundle.js"></script>
     <script src="./js/jb-flashcards.js"></script>
     <script>
-      var hideAnswerText = 'Click here for answer';
+      var hideAnswerText = 'Click here or press CTRL to see answer';
       var cards;
       var card;
       var heading = $('#flashCardDiv .heading');
@@ -78,6 +78,13 @@
             answer.html(answer.attr('answer'));
           }
         });
+        $(document).on('keydown', function(e){
+          if(e.key.toLowerCase()=='control') {
+            if(answer.html() == hideAnswerText) {
+              answer.html(answer.attr('answer'));
+            }          
+          }
+        });
         $('#flashCardDiv button.correct').on('click', function(){
           cards.correct();
           renderNext();
@@ -96,20 +103,16 @@
           $('#flashCardDiv button.update').toggleClass('d-none');
         });
         $('#flashCardDiv button.update').on('click', function(){
-          $.ajax({
-            type: "PUT",
-            url: "/api/v1/questions/",
-            data: {
-              id: question_id.attr('qid'),
-              q: $('#edit_question').val(),
-              a: $('#edit_answer').val()
-            },
-            success: function(data) {
-              console.log('question updated');
+          var parms = { verb:'update',id:question_id.attr('qid'),q:$('#edit_question').val(),a:$('#edit_answer').val() };
+          $.ajax( { type:'POST',data:JSON.stringify(parms),contentType:'application/json',url:'/api/v1/questions',
+            success: function(data){
+              question_id.attr('qid', data.id);
+              question.html(data.q);
+              answer.attr('answer',data.a).html(hideAnswerText);
             }
-          })
+          });
         });
-      })
+      });
     </script>
   </body>
 </html>

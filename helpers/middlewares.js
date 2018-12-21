@@ -7,7 +7,15 @@ function mustBeInteger(req, res, next) {
         next()
     }
 }
+function mustBeVerb(req, res, next) {
+    const cmd = req.params.cmd.toLowerCase();
 
+    if (cmd!=='update' && cmd!=='insert' && cmd!=='delete') {
+        res.status(400).json({ message: 'Not a verb' })
+    } else {
+        next()
+    }
+}
 function checkFieldsPost(req, res, next) {
     const { title, content, tags } = req.body
 
@@ -20,5 +28,6 @@ function checkFieldsPost(req, res, next) {
 
 module.exports = {
     mustBeInteger,
+    mustBeVerb,
     checkFieldsPost
 }
