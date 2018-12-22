@@ -43,8 +43,8 @@ function updateItem(id,q,a) {
         helper.mustBeInArray(questions, id)
         .then(item => {
             const index = questions.findIndex(p => p.id == item.id);
-            questions[index] = { id:item.id,q:q,a:a };
-            helper.writeJSONFile(filename, questions);
+            questions[index] = { 'id':item.id,'q':q,'a':a };
+            helper.writeJSONFile('data/questions.json', questions);
             resolve(questions[index]);
         })
         .catch(err => reject(err));

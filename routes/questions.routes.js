@@ -32,25 +32,23 @@ router.get('/:id', m.mustBeInteger, async (req, res) => {
 
 /* update, insert, delete */
 router.post('/', async (req, res) => {
-    debugger;
-    const verb = req.body.verb.toLowerCase();
+    const verb = req.body.verb;
     switch(verb) {
         case 'update':
-            await model.updateItem(req.body)
+            await model.updateItem(req.body.id, req.body.q, req.body.a)
             .then(item => res.json({
                 message: `Question #${item.id} has been updated`,
                 content: item
             }))
-            .catch(err => {console.log('in error');
+            .catch(err => {
                 if (err.status) {
                     res.status(err.status).json({ message: err.message })
                 }
                 res.status(500).json({ message: err.message })
-                
             })
         break;
         case 'insert':
-            await model.insertItem(req.body)
+            await model.insertItem(req.body.id, req.body.q, req.body.a)
             .then(item => res.status(201).json({
                 message: `The question #${item.id} has been created`,
                 content: item

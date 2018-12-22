@@ -104,7 +104,7 @@
         });
         $('#flashCardDiv button.update').on('click', function(){
           var parms = { verb:'update',id:question_id.attr('qid'),q:$('#edit_question').val(),a:$('#edit_answer').val() };
-          $.ajax( { type:'POST',data:JSON.stringify(parms),contentType:'application/json',url:'/api/v1/questions',
+          $.ajax( { type:'POST',data:JSON.stringify(parms),contentType:'application/json',url:'/api/v1/questions/',
             success: function(data){
               question_id.attr('qid', data.id);
               question.html(data.q);
